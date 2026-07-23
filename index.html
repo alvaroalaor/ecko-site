@@ -22,6 +22,9 @@
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  html{overflow-x:hidden;max-width:100%}
+  .kinora-grid>*,.verso-grid>*,.gpu>*,.twin>*,.about>*,.arch-head>*{min-width:0}
+  img,canvas,video{max-width:100%}
   a{color:inherit;text-decoration:none}
   ::selection{background:rgba(52,224,180,.28)}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
@@ -91,10 +94,10 @@
   .aud{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
   .aud span{font-family:var(--mono);font-size:12px;color:var(--ink-dim);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
   .phone-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-  .phone{width:150px;aspect-ratio:9/19;border-radius:26px;border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),#070b11);padding:12px;box-shadow:0 30px 60px -40px #000}
+  .phone{width:150px;aspect-ratio:9/19;border-radius:26px;border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),#070b11);padding:12px;box-shadow:0 30px 60px -40px #000;overflow:hidden;min-width:0}
   .phone .notch{width:40px;height:5px;border-radius:99px;background:var(--line);margin:2px auto 12px}
-  .phone .scr{font-family:var(--mono);font-size:9.5px;color:var(--ink-dim)}
-  .phone .metric{font-family:var(--disp);font-weight:600;font-size:25px;margin:3px 0}
+  .phone .scr{font-family:var(--mono);font-size:9.5px;color:var(--ink-dim);overflow-wrap:anywhere}
+  .phone .metric{font-family:var(--disp);font-weight:600;font-size:19px;line-height:1.15;margin:3px 0;overflow-wrap:anywhere;letter-spacing:-.02em}
   .phone .bar{height:34px;display:flex;align-items:flex-end;gap:3px;margin-top:10px}
   .phone .bar i{flex:1;background:linear-gradient(180deg,var(--cyan),var(--blue));border-radius:2px;opacity:.85}
   .phone.p2{margin-top:26px}
@@ -474,7 +477,7 @@
     <div class="stats reveal">
       <div class="stat"><div class="n">13</div><div class="l">independent validation studies</div></div>
       <div class="stat"><div class="n">8</div><div class="l">public datasets</div></div>
-      <div class="stat"><div class="n">[N]</div><div class="l">observations analysed — <b>confirmar total</b></div></div>
+      <div class="stat"><div class="n">230,000+</div><div class="l">observations analysed</div></div>
       <div class="stat"><div class="n">2</div><div class="l">patent applications filed · INPI<br/>1 additional in preparation</div></div>
       <div class="stat"><div class="n">1</div><div class="l">peer-reviewed publication</div></div>
       <div class="stat"><div class="n">2</div><div class="l">accepted international conference presentations</div></div>
@@ -482,7 +485,7 @@
 
     <div class="congress reveal">
       <div class="cgl">Accepted for presentation</div>
-      <div class="cgt">Two studies from this program will be presented at the <b>[CONGRESSO — confirmar nome]</b> — Sorbonne, Paris · September 2026.</div>
+      <div class="cgt">Two studies from this program will be presented at the <b>Nature Conference: Redefining Healthcare in the Age of AI</b> — Sorbonne University, Paris · September 2026.</div>
     </div>
 
     <details class="papers reveal">
@@ -533,12 +536,10 @@
           <div class="meta"><span class="ds">GEO · GSE209880 / GSE262576</span></div>
         </div>
         <div class="prow">
-          <h4>[TÍTULO — confirmar] Circadian clock architecture in human skeletal muscle under constant routine</h4>
-          <div class="meta"><span class="ds">GEO · GSE108539</span></div>
+          <h4>GEO Dataset — GSE108539</h4>
         </div>
         <div class="prow">
-          <h4>[TÍTULO — confirmar] Preserved circadian organization with reduced oscillatory potency in human primary myotubes</h4>
-          <div class="meta"><span class="ds">GEO · GSE182117</span></div>
+          <h4>GEO Dataset — GSE182117</h4>
         </div>
       </div>
     </details>
@@ -635,7 +636,7 @@
         <h3>Partnerships &amp; research collaboration</h3>
         <p>Open to technology partners, research collaborations and accelerator programs.</p>
       </div>
-      <a class="btn btn-primary" href="mailto:[EMAIL — confirmar]">[EMAIL — confirmar]</a>
+      <a class="btn btn-primary" href="mailto:alvaro@verso1.com">alvaro@verso1.com</a>
     </div>
   </div>
 </section>
