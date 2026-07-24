@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ECKO — Adaptive Physiological Intelligence</title>
 <meta name="description" content="Kinora, powered by VERSO, built on ECKO. AI infrastructure for understanding human physiological adaptation." />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='52' r='40' fill='none' stroke='%2346d6e6' stroke-width='6'/%3E%3Cline x1='50' y1='12' x2='50' y2='92' stroke='%2346d6e6' stroke-width='6'/%3E%3Ccircle cx='50' cy='52' r='18' fill='%2346d6e6'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='52' r='40' fill='none' stroke='%232fbf76' stroke-width='6'/%3E%3Cline x1='50' y1='12' x2='50' y2='92' stroke='%232fbf76' stroke-width='6'/%3E%3Ccircle cx='50' cy='52' r='18' fill='%232fbf76'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
@@ -14,6 +14,7 @@
     --ink:#eaf2f6; --ink-dim:#93a3b2; --ink-faint:#5f7080;
     --cyan:#46d6e6; --teal:#34e0b4; --blue:#5b8cff;
     --glow:rgba(70,214,230,.55);
+    --green:#2fbf76;
     --disp:"Space Grotesk",system-ui,sans-serif;
     --body:"Inter",system-ui,sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -39,9 +40,9 @@
   nav.solid{background:rgba(6,8,11,.94);border-bottom:1px solid var(--line)}
   .brand{font-family:var(--disp);font-weight:700;letter-spacing:.28em;font-size:15px;display:flex;align-items:center;gap:11px}
   .brand .wordmark span{color:var(--cyan)}
-  .mark-ecko{width:22px;height:22px;color:var(--cyan);flex:none}
-  .mark-verso{width:132px;height:132px;color:var(--cyan);opacity:.9}
-  .mark-final{width:54px;height:54px;color:var(--cyan);margin-bottom:20px}
+  .mark-ecko{width:22px;height:22px;color:var(--green);flex:none}
+  .mark-verso{width:132px;height:132px;color:var(--green);opacity:.95}
+  .mark-final{width:54px;height:54px;color:var(--green);margin-bottom:20px}
   .neural-mark{position:absolute;inset:0;display:grid;place-items:center;z-index:2;pointer-events:none}
   .navlinks{display:flex;gap:26px;font-size:13.5px;color:var(--ink-dim);font-weight:500}
   .navlinks a:hover{color:var(--ink)}
@@ -52,7 +53,8 @@
   /* HERO */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
   #bodyCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:.85}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:1}
+  .hero-video.hidden{display:none}
   .hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 80% at 72% 42%,rgba(70,214,230,.10),transparent 60%),radial-gradient(90% 60% at 50% 120%,rgba(91,140,255,.10),transparent 60%),linear-gradient(180deg,rgba(6,8,11,.30),rgba(6,8,11,.80) 92%)}
   .hero-inner{position:relative;z-index:3;width:100%}
   /* filme conceito vertical */
@@ -720,6 +722,15 @@
 
   var lio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.35});
   document.querySelectorAll('#lego .layer, #lego .connector').forEach(function(el){lio.observe(el)});
+
+  /* hero video: cobre o corpo quando existe; se não carregar, revela o corpo de partículas */
+  var hv=document.querySelector('.hero-video');
+  if(hv){
+    var hideHV=function(){hv.classList.add('hidden');};
+    hv.addEventListener('error',hideHV,true);
+    hv.addEventListener('loadeddata',function(){hv.classList.remove('hidden');});
+    setTimeout(function(){ if(hv.readyState<2) hideHV(); },3500);
+  }
 
   if(reduce) return;
 
