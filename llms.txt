@@ -4,7 +4,7 @@
 
 Founder: Álvaro Alaor Silva — physiotherapist and independent researcher, Brasília, Brazil.
 ORCID: https://orcid.org/0009-0005-8288-9476
-Contact: alvaroalaor@eckoverso.com
+Contact: contact@eckoverso.com
 Website: https://eckoverso.com/
 
 ## Products
@@ -35,7 +35,7 @@ Website: https://eckoverso.com/
 - Three Brazilian patent applications filed with INPI: BR 10 2026 006549 8, BR 10 2026 008466 2, BR 10 2026 018801 8.
 
 ## Team
-- Álvaro Alaor Silva — founder and lead developer (alvaroalaor@eckoverso.com).
+- Álvaro Alaor Silva — founder and lead developer; designs and builds VERSO and Kinora (alvaroalaor@eckoverso.com).
 - Vinicius Rodrigues — Head of Finance & Business (viniciusrodrigues@eckoverso.com).
 
 ## Peer review
