@@ -1,0 +1,42 @@
+# ECKO
+
+> Adaptive physiological intelligence. ECKO builds adaptive digital twins: models of how one person adapts to physiological load over time, using everyday signals such as respiration, voice, sleep, light, routine and movement.
+
+Founder: Álvaro Alaor Silva — physiotherapist and independent researcher, Brasília, Brazil.
+ORCID: https://orcid.org/0009-0005-8288-9476
+Contact: alvaroalaor@eckoverso.com
+Website: https://eckoverso.com/
+
+## Products
+- VERSO: ECKO's AI inference engine. Deterministic and auditable today; learned longitudinal models are the next stage. Fuses independent modules into one longitudinal model of adaptation.
+- Kinora: first application. Longitudinal read of how a person reorganizes after load — respiration, routine, load and recovery.
+- MyoReserve: in development. Muscle function and reserve over time.
+
+## Core concepts
+- Recovery Latency (RL): the time a physiological marker takes to return to the individual's own baseline after a high-load event. Used as a temporal biomarker of adaptive capacity.
+- Adaptive Capacity: the reserve available to respond to a physiological challenge.
+- Early Warning Signals: critical slowing down; resilience eroding before it becomes visible.
+
+## Public research outputs
+- Published: "Recovery Latency as a Dynamic Biomarker of Adaptive Capacity", International Journal of Sports Physiology and Performance, DOI 10.1123/ijspp.2026-0111.
+- Preprint and accepted at the Nature Conference "Redefining Healthcare in the Age of AI" (Sorbonne University, Paris, September 2026): "Temporal Dynamics of Recovery Latency Reveal Early Warning Signals of Loss of Physiological Resilience: A Multi-Dataset Analysis", Research Square, https://www.researchsquare.com/article/rs-9108092/v1
+- Accepted at the same conference: "Voice tasks reveal a latent respiratory–phonatory organization linked to perceived vocal change in the Bridge2AI-Voice cohort".
+- Preprint: "Digital Acoustic Phenotypes of Overnight Respiratory Activity", Preprints.org, https://www.preprints.org/manuscript/202609.0694
+- Under review: "Multimodal Recovery Latency in Professional Women's Football: Domain-Specific Adaptation and Graded Reversal After Perturbation".
+- Under review: "An Adaptive Recovery Window in the Annual Light Cycle: Photoperiod Associates with Recovery Latency Across Seven Wellness Domains".
+- Under review: "Microphone-Derived Respiratory Rhythm Organization During Sleep: Event-Specific Disruption and Cross-Modal Convergence With Oximetry".
+- Next stage for the two conference studies: simulation studies with known ground truth.
+
+## Simulation studies with known ground truth (in progress)
+- 01 — Adaptive Capacity Dynamics: longitudinal simulation of adaptive-capacity trajectories.
+- 02 — Energy Resistance & Temporal Dynamics (éR–ΔT): simulation of energy resistance and the temporal organization of thermal oscillation (ΔT = evening minus morning temperature).
+
+## Intellectual property
+- Three Brazilian patent applications filed with INPI: BR 10 2026 006549 8, BR 10 2026 008466 2, BR 10 2026 018801 8.
+
+## Team
+- Álvaro Alaor Silva — founder and lead developer (alvaroalaor@eckoverso.com).
+- Vinicius Rodrigues — Head of Finance & Business (viniciusrodrigues@eckoverso.com).
+
+## Peer review
+- Peer reviewer for PLOS Digital Health (46 reviews). Public review: https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0001690

@@ -4,10 +4,49 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ECKO — Adaptive Physiological Intelligence</title>
-<meta name="description" content="Kinora, powered by VERSO, built on ECKO. AI infrastructure for understanding human physiological adaptation." />
+<meta name="description" content="ECKO builds adaptive digital twins from everyday physiological signals. VERSO is its AI inference engine; Kinora is the first application. Founded by Álvaro Alaor Silva, Brasília, Brazil." />
+<link rel="canonical" href="https://eckoverso.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ECKO — Adaptive Physiological Intelligence" />
+<meta property="og:description" content="A living model of how your body adapts. VERSO engine · Kinora · MyoReserve." />
+<meta property="og:url" content="https://eckoverso.com/" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='52' r='40' fill='none' stroke='%232fbf76' stroke-width='6'/%3E%3Cline x1='50' y1='12' x2='50' y2='92' stroke='%232fbf76' stroke-width='6'/%3E%3Ccircle cx='50' cy='52' r='18' fill='%232fbf76'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://eckoverso.com/#org",
+      "name": "ECKO",
+      "url": "https://eckoverso.com/",
+      "email": "alvaroalaor@eckoverso.com",
+      "description": "Adaptive physiological intelligence: AI infrastructure that models how a person adapts to load over time, using respiration, voice, sleep, light and routine signals.",
+      "founder": { "@id": "https://eckoverso.com/#founder" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://eckoverso.com/#founder",
+      "name": "Álvaro Alaor Silva",
+      "jobTitle": "Founder & Lead Developer, ECKO",
+      "description": "Physiotherapist and independent researcher in human physiological adaptation and Recovery Latency.",
+      "email": "alvaroalaor@eckoverso.com",
+      "sameAs": ["https://orcid.org/0009-0005-8288-9476"],
+      "worksFor": { "@id": "https://eckoverso.com/#org" }
+    },
+    {
+      "@type": "Person",
+      "name": "Vinicius Rodrigues",
+      "jobTitle": "Head of Finance & Business, ECKO",
+      "email": "viniciusrodrigues@eckoverso.com",
+      "worksFor": { "@id": "https://eckoverso.com/#org" }
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --bg:#06080b; --bg-2:#0a0e14; --panel:#0c111a; --line:#1b2532;
@@ -39,7 +78,8 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 26px;background:linear-gradient(180deg,rgba(6,8,11,.85),rgba(6,8,11,0));backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:.3s}
   nav.solid{background:rgba(6,8,11,.94);border-bottom:1px solid var(--line)}
   .brand{font-family:var(--disp);font-weight:700;letter-spacing:.28em;font-size:15px;display:flex;align-items:center;gap:11px}
-  .brand .wordmark span{color:var(--cyan)}
+  .brand .wordmark small{font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.22em;color:var(--ink-faint);margin-right:8px}
+  .brand .wordmark b{color:var(--cyan);font-weight:700}
   .mark-ecko{width:22px;height:22px;color:var(--green);flex:none}
   .mark-verso{width:132px;height:132px;color:var(--green);opacity:.95}
   .mark-final{width:54px;height:54px;color:var(--green);margin-bottom:20px}
@@ -51,26 +91,25 @@
   @media(max-width:900px){.navlinks{display:none}}
 
   /* HERO */
-  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:110px 0 60px}
   #bodyCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
   .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:1}
   .hero-video.hidden{display:none}
   .hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(120% 80% at 72% 42%,rgba(70,214,230,.10),transparent 60%),radial-gradient(90% 60% at 50% 120%,rgba(91,140,255,.10),transparent 60%),linear-gradient(180deg,rgba(6,8,11,.30),rgba(6,8,11,.80) 92%)}
   .hero-inner{position:relative;z-index:3;width:100%}
-  /* filme conceito vertical */
-  .film{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:center}
-  .film h2{font-size:clamp(26px,4vw,44px);max-width:15ch;margin-bottom:18px}
-  .film p{color:var(--ink-dim);max-width:46ch}
-  .film-frame{width:100%;max-width:340px;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 40px 80px -50px #000;justify-self:center}
-  .film-frame video{width:100%;height:100%;object-fit:cover;display:block;background:#05070a}
-  @media(max-width:820px){.film{grid-template-columns:1fr;gap:32px}.film-frame{justify-self:start}}
-  .stack{display:flex;flex-direction:column;gap:2px;margin-bottom:26px}
-  .stack .s1{font-family:var(--disp);font-weight:700;font-size:clamp(40px,7.4vw,78px);letter-spacing:.01em;line-height:1}
-  .stack .join{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin:6px 0 2px}
-  .stack .s2{font-family:var(--disp);font-weight:600;font-size:clamp(26px,4.4vw,44px);color:var(--cyan);letter-spacing:.02em;line-height:1}
-  .stack .s3{font-family:var(--disp);font-weight:600;font-size:clamp(20px,3vw,30px);color:var(--ink-dim);letter-spacing:.16em;line-height:1}
-  .hero .lede{max-width:540px;color:var(--ink-dim);font-size:16.5px}
+  .hero h1{font-size:clamp(38px,6.4vw,74px);font-weight:600;max-width:14ch;margin-bottom:24px;letter-spacing:-.03em}
+  .hero h1 .c{background:linear-gradient(120deg,var(--cyan),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .lede{max-width:560px;color:var(--ink-dim);font-size:16.5px}
   .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .tldr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:34px;max-width:960px}
+  .tldr div{border:1px solid var(--line);border-radius:10px;background:rgba(12,17,26,.72);padding:12px 14px}
+  .tldr b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:4px}
+  .tldr span{font-size:13px;color:var(--ink-dim);line-height:1.45}
+  @media(max-width:820px){.tldr{grid-template-columns:1fr 1fr}}
+  .hero-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:56px;max-width:860px;border-top:1px solid var(--line);padding-top:26px}
+  .hs .n{font-family:var(--disp);font-weight:700;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em;color:var(--ink);line-height:1.1}
+  .hs .l{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);margin-top:6px;line-height:1.45}
+  @media(max-width:720px){.hero-stats{grid-template-columns:1fr 1fr}}
   .btn{font-family:var(--mono);font-size:13px;padding:13px 22px;border-radius:8px;display:inline-flex;align-items:center;gap:9px;transition:.18s}
   .btn:hover{transform:translateY(-1px)}
   .btn-primary{background:linear-gradient(120deg,var(--cyan),var(--teal));color:#04121a;font-weight:500}
@@ -79,6 +118,14 @@
   .btn-ghost:hover{border-color:var(--cyan)}
   .scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;animation:bob 2.4s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+  /* filme conceito vertical */
+  .film{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:center}
+  .film h2{font-size:clamp(26px,4vw,44px);max-width:15ch;margin-bottom:18px}
+  .film p{color:var(--ink-dim);max-width:46ch}
+  .film-frame{width:100%;max-width:340px;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 40px 80px -50px #000;justify-self:center}
+  .film-frame video{width:100%;height:100%;object-fit:cover;display:block;background:#05070a}
+  @media(max-width:820px){.film{grid-template-columns:1fr;gap:32px}.film-frame{justify-self:start}}
 
   /* STATEMENT */
   .statement{padding:130px 0;border-top:1px solid var(--line);background:linear-gradient(180deg,var(--bg),var(--bg-2))}
@@ -99,6 +146,17 @@
   .tri h3{font-size:19px;margin:12px 0 8px}
   .tri p{color:var(--ink-dim);font-size:14px;margin:0}
   @media(max-width:820px){.triad{grid-template-columns:1fr}}
+
+  /* PRODUCTS */
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+  .prod{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:28px 24px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+  .prod::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),transparent)}
+  .prod .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+  .prod h3{font-size:26px;letter-spacing:.02em}
+  .prod p{color:var(--ink-dim);font-size:14.5px;margin:0}
+  .prod .status{align-self:flex-start;margin-top:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:5px;padding:3px 7px}
+  .prod a.more{font-family:var(--mono);font-size:12px;color:var(--cyan);margin-top:auto}
+  @media(max-width:820px){.prod-grid{grid-template-columns:1fr}}
 
   /* KINORA */
   .kinora-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
@@ -214,10 +272,11 @@
   .gpu h2{font-size:clamp(26px,4vw,44px);max-width:16ch;margin-bottom:20px}
   .load{display:flex;flex-direction:column;gap:12px}
   .loadrow{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:14px 16px;display:flex;align-items:center;gap:14px}
-  .loadrow .t{font-family:var(--mono);font-size:12.5px;color:var(--ink-dim);flex:none;width:150px}
+  .loadrow .t{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);flex:none;width:60px}
+  .loadrow span:last-child{font-size:14px;color:var(--ink-dim)}
   .loadrow .track{flex:1;height:6px;border-radius:99px;background:#131b26;overflow:hidden}
   .loadrow .track i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:99px}
-  @media(max-width:820px){.gpu{grid-template-columns:1fr;gap:32px}.loadrow .t{width:120px}}
+  @media(max-width:820px){.gpu{grid-template-columns:1fr;gap:32px}}
 
   /* ROADMAP */
   .road{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -236,6 +295,7 @@
   .roles{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
   .roles span{font-family:var(--mono);font-size:12px;color:var(--ink-dim);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
   .about p{color:var(--ink-dim);max-width:60ch}
+  .about .orcid{font-family:var(--mono);font-size:12.5px;color:var(--cyan)}
   .contact{margin-top:64px;border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:34px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
   .contact h3{font-size:22px}
   .contact p{color:var(--ink-dim);margin:6px 0 0;font-size:14.5px}
@@ -245,7 +305,8 @@
   .final{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#040507;border-top:1px solid var(--line);padding:60px 24px}
   .final h2{font-size:clamp(26px,4.4vw,46px);font-weight:500;max-width:22ch}
   .final .mark{margin-top:44px;font-family:var(--disp);font-weight:700;letter-spacing:.34em;font-size:20px}
-  .final .mark span{color:var(--cyan)}
+  .final .mark small{display:block;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.3em;color:var(--ink-faint);margin-bottom:6px}
+  .final .mark b{color:var(--cyan);font-weight:700}
   .final .sub{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:12px}
   footer{padding:30px 26px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--ink-faint)}
 
@@ -257,22 +318,22 @@
 <body>
 
 <nav id="nav">
-  <a class="brand" href="#top">
+  <a class="brand" href="#top" id="top">
     <svg viewBox="0 0 100 100" class="mark-ecko" aria-label="ECKO">
       <circle cx="50" cy="52" r="40" fill="none" stroke="currentColor" stroke-width="5"/>
       <line x1="50" y1="26" x2="50" y2="92" stroke="currentColor" stroke-width="5"/>
       <polygon points="50,6 41,28 59,28" fill="currentColor"/>
       <circle cx="50" cy="52" r="18" fill="currentColor"/>
     </svg>
-    <span class="wordmark">EC<span>K</span>O</span>
+    <span class="wordmark">EC<b>K</b>O</span>
   </a>
   <div class="navlinks">
-    <a href="#kinora">Kinora</a>
+    <a href="#twin">Digital twin</a>
+    <a href="#products">Products</a>
     <a href="#verso">VERSO</a>
-    <a href="#architecture">Architecture</a>
     <a href="#research">Research</a>
+    <a href="#ip">IP</a>
     <a href="#compute">Compute</a>
-    <a href="#roadmap">Roadmap</a>
   </div>
   <a class="navcta" href="#contact">Partnerships</a>
 </nav>
@@ -285,17 +346,24 @@
   </video>
   <div class="hero-inner">
     <div class="wrap">
-      <div class="stack">
-        <div class="s1">KINORA</div>
-        <div class="join">powered by</div>
-        <div class="s2">VERSO</div>
-        <div class="join">built on</div>
-        <div class="s3">ECKO</div>
-      </div>
-      <p class="lede">AI infrastructure for understanding human physiological adaptation. Kinora is its first application.</p>
+      <span class="eyebrow">ECKO · Adaptive Physiological Intelligence</span>
+      <h1>A living model of how your body <span class="c">adapts.</span></h1>
+      <p class="lede">ECKO builds adaptive digital twins from everyday physiological signals — respiration, voice, sleep, light and load. VERSO is its AI inference engine. Kinora is the first application.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#kinora">See the product</a>
-        <a class="btn btn-ghost" href="#architecture">Explore the platform</a>
+        <a class="btn btn-primary" href="#twin">Meet the twin</a>
+        <a class="btn btn-ghost" href="#research">See the evidence</a>
+      </div>
+      <div class="tldr">
+        <div><b>What</b><span>ECKO is an AI platform that models how one person adapts to physiological load over time.</span></div>
+        <div><b>How</b><span>VERSO, its AI inference engine, turns everyday signals — respiration, voice, sleep, routine — into an individual longitudinal model.</span></div>
+        <div><b>Why GPU</b><span>Simulation studies and longitudinal model training over millions of samples per cohort.</span></div>
+        <div><b>Stage</b><span>Kinora MVP in testing with volunteers · 1 peer-reviewed paper · 2 accepted at Nature Conference · 3 patent applications.</span></div>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><div class="n">7</div><div class="l">public research outputs<br/>published · preprint · accepted · under review</div></div>
+        <div class="hs"><div class="n">3</div><div class="l">patent applications<br/>filed · INPI</div></div>
+        <div class="hs"><div class="n">Nature Conf.</div><div class="l">Sorbonne, Paris · 2026<br/>2 studies accepted</div></div>
+        <div class="hs"><div class="n">46</div><div class="l">peer reviews<br/>PLOS Digital Health</div></div>
       </div>
     </div>
   </div>
@@ -309,8 +377,32 @@
   </div>
 </section>
 
+<!-- ADAPTIVE DIGITAL TWIN -->
+<section class="sec" id="twin">
+  <div class="wrap reveal">
+    <span class="eyebrow">Adaptive digital twin</span>
+    <h2 style="font-size:clamp(27px,4.4vw,48px);margin-bottom:34px;max-width:20ch">One organism. One model. Continuously updated.</h2>
+    <div class="twin">
+      <div class="side human">
+        <div class="lbl">The individual</div>
+        <h3>One organism, over time</h3>
+        <div class="feed">
+          <span>Respiration</span><span>Voice</span><span>Routine &amp; light</span>
+          <span>Sleep</span><span>Movement</span><span>Systemic load</span>
+        </div>
+      </div>
+      <div class="side digital">
+        <div class="lbl">The twin</div>
+        <h3>Continuously updated</h3>
+        <p class="dim" style="font-size:14.5px;margin:8px 0 0">Every signal feeds the model. The twin doesn't store measurements — it learns the shape of your adaptation.</p>
+        <div class="state">→ Adaptive state</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ADAPTIVE INTELLIGENCE -->
-<section class="sec ai-lines" id="adaptive">
+<section class="sec dark ai-lines" id="adaptive">
   <div class="wrap reveal">
     <span class="eyebrow">Adaptive intelligence</span>
     <h2>
@@ -339,6 +431,34 @@
   </div>
 </section>
 
+<!-- PRODUCTS -->
+<section class="sec" id="products">
+  <div class="wrap reveal">
+    <span class="eyebrow">One platform, several products</span>
+    <h2 style="font-size:clamp(27px,4.4vw,48px);max-width:22ch">Everything is built on ECKO.</h2>
+    <div class="prod-grid">
+      <div class="prod">
+        <div class="tag">Engine</div>
+        <h3>VERSO</h3>
+        <p>ECKO's AI inference engine. It fuses independent modules into one longitudinal model of how a person adapts to load.</p>
+        <a class="more" href="#verso">How it works →</a>
+      </div>
+      <div class="prod">
+        <div class="tag">First application</div>
+        <h3>KINORA</h3>
+        <p>A longitudinal read of how a person is reorganizing — respiration, routine, load and recovery.</p>
+        <a class="more" href="#kinora">See Kinora →</a>
+      </div>
+      <div class="prod">
+        <div class="tag">Next application</div>
+        <h3>MyoReserve</h3>
+        <p>Muscle function and reserve over time.</p>
+        <span class="status">In development</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- KINORA -->
 <section class="sec dark" id="kinora">
   <div class="wrap">
@@ -346,10 +466,10 @@
       <div class="kinora-copy reveal">
         <span class="eyebrow">The product</span>
         <h2>KINORA</h2>
-        <div class="sub">The first application built on the ECKO platform.</div>
+        <div class="sub">The first application built on ECKO.</div>
         <p>Kinora turns everyday events into a longitudinal read of how a person is reorganizing — respiration, routine, load and recovery — for people rebuilding capacity after disruption.</p>
         <div class="aud">
-          <span>Post-surgery recovery</span><span>Post-viral fatigue</span>
+          <span>Return to activity</span><span>Post-viral fatigue</span>
           <span>Chronic fatigue</span><span>Burnout</span><span>Longevity</span>
         </div>
       </div>
@@ -378,7 +498,7 @@
   <div class="wrap">
     <div class="verso-grid">
       <div class="verso-copy reveal">
-        <span class="eyebrow">The intelligence engine</span>
+        <span class="eyebrow">The AI inference engine</span>
         <h2>Humans experience physiology. VERSO models adaptation.</h2>
         <p>VERSO does not replace human perception — it <span class="hl">expands</span> it. People learn to recognize coarse physiological change, but remain effectively blind to what is slow, cumulative and multidimensional. VERSO is the translator for those invisible patterns.</p>
         <p class="mirror">It doesn't tell you how you are. It shows what your body is already saying — in a language the brain can understand.</p>
@@ -430,7 +550,7 @@
   <div class="wrap">
     <div class="arch-head reveal">
       <div><span class="eyebrow">Adaptive architecture</span><h2>Built like blocks.</h2></div>
-      <p>Every module is an independent, scientifically validated piece — useful on its own. Because they share the same interface, they interlock into something larger than their sum.</p>
+      <p>Every module is an independent piece, studied on its own data and useful on its own. Because they share the same interface, they interlock into something larger than their sum.</p>
     </div>
 
     <div id="lego">
@@ -440,8 +560,8 @@
       </div>
       <div class="connector"></div>
       <div class="layer"><div class="knobs"><i></i><i></i><i></i></div>
-        <div class="lnum">02 · VALIDATED PIECES</div><h3>Scientific modules</h3>
-        <p class="lsub">Each block is validated independently before it is allowed to connect.</p>
+        <div class="lnum">02 · INDEPENDENT PIECES</div><h3>Scientific modules</h3>
+        <p class="lsub">Each block is evaluated on its own before it is allowed to connect.</p>
         <div class="mods">
           <div class="mod"><div class="mtop"></div><h4>Recovery Latency</h4><p>Temporal cost of adaptation after load.</p></div>
           <div class="mod"><div class="mtop"></div><h4>Respiratory Intelligence</h4><p>Respiratory and acoustic organization.</p></div>
@@ -466,7 +586,7 @@
         <div class="lnum">05 · OUTPUT</div><h3>Applications</h3>
         <p class="lsub">Where the platform meets the world.</p>
         <div class="apps">
-          <span>Kinora</span><span>Prevention</span><span>Recovery</span><span>Decision support</span>
+          <span>Kinora</span><span>MyoReserve</span><span>Prevention</span><span>Recovery</span>
           <span>Wearables</span><span>Smart garments</span><span>Electronic stethoscopes</span>
           <span>SDK / API</span><span>Robotics &amp; exoskeletons</span>
         </div>
@@ -475,121 +595,112 @@
   </div>
 </section>
 
-<!-- ADAPTIVE DIGITAL TWIN -->
-<section class="sec">
-  <div class="wrap reveal">
-    <span class="eyebrow">Adaptive digital twin</span>
-    <h2 style="font-size:clamp(27px,4.4vw,48px);margin-bottom:34px;max-width:20ch">A living model of how you adapt.</h2>
-    <div class="twin">
-      <div class="side human">
-        <div class="lbl">The individual</div>
-        <h3>One organism, over time</h3>
-        <div class="feed">
-          <span>Respiration</span><span>Voice</span><span>Routine &amp; light</span>
-          <span>Sleep</span><span>Movement</span><span>Systemic load</span>
-        </div>
-      </div>
-      <div class="side digital">
-        <div class="lbl">The twin</div>
-        <h3>Continuously updated</h3>
-        <p class="dim" style="font-size:14.5px;margin:8px 0 0">Every signal feeds the model. The twin doesn't store measurements — it learns the shape of your adaptation.</p>
-        <div class="state">→ Adaptive state</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- RESEARCH -->
-<section class="sec dark" id="research">
+<section class="sec" id="research">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Evidence</span>
       <h2 style="font-size:clamp(27px,4.4vw,48px);max-width:22ch">Science before scale.</h2>
-      <p class="dim" style="max-width:60ch;margin-top:16px">Every capability in VERSO is validated on independent, reproducible datasets before it becomes part of the platform.</p>
+      <p class="dim" style="max-width:60ch;margin-top:16px">Each capability in VERSO is first studied on independent, public human datasets. Where real data are too scarce, the next stage is a simulation study with known ground truth.</p>
     </div>
 
     <div class="stats reveal">
-      <div class="stat"><div class="n">13</div><div class="l">independent validation studies</div></div>
-      <div class="stat"><div class="n">8</div><div class="l">public datasets</div></div>
-      <div class="stat"><div class="n">230,000+</div><div class="l">observations analysed</div></div>
-      <div class="stat"><div class="n">2</div><div class="l">patent applications filed · INPI<br/>1 additional in preparation</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">public research outputs</div></div>
       <div class="stat"><div class="n">1</div><div class="l">peer-reviewed publication</div></div>
-      <div class="stat"><div class="n">2</div><div class="l">accepted international conference presentations</div></div>
+            <div class="stat"><div class="n">2</div><div class="l">accepted · Nature Conference, Paris</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">manuscripts under review</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">ongoing analyses</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">simulation studies in progress</div></div>
     </div>
 
     <div class="congress reveal">
       <div class="cgl">Accepted for presentation</div>
-      <div class="cgt">Two studies from this program will be presented at the <b>Nature Conference: Redefining Healthcare in the Age of AI</b> — Sorbonne University, Paris · September 2026.</div>
+      <div class="cgt">Two studies from this program were accepted for presentation at the <b>Nature Conference: Redefining Healthcare in the Age of AI</b> — Sorbonne University, Paris · September 2026.</div>
     </div>
 
-    <details class="papers reveal">
-      <summary>View the full scientific program</summary>
+    <details class="papers reveal" open>
+      <summary>Public research outputs</summary>
       <div class="plist">
         <div class="prow">
           <h4>Recovery Latency as a Dynamic Biomarker of Adaptive Capacity</h4>
-          <div class="meta"><span class="pub">Published · IJSPP</span><span class="ds">SportRxiv</span><span class="doi">DOI 10.1123/ijspp.2026-0111</span></div>
-        </div>
-        <div class="prow">
-          <h4>Photoperiod and Recovery Kinetics in Endurance Athletes: Evidence for a Non-Linear Association</h4>
-          <div class="meta"><span class="ds">Kaggle</span></div>
-        </div>
-        <div class="prow">
-          <h4>Multimodal Recovery Latency Identifies Adaptive Self-Regulation Patterns Preceding Injury in Professional Women's Football</h4>
-          <div class="meta"><span class="ds">SoccerMon</span></div>
+          <div class="meta"><span class="pub">Published · IJSPP</span><span class="ds">Kaggle</span><a class="doi" href="https://doi.org/10.1123/ijspp.2026-0111" target="_blank" rel="noopener">DOI 10.1123/ijspp.2026-0111</a></div>
         </div>
         <div class="prow">
           <h4>Temporal Dynamics of Recovery Latency Reveal Early Warning Signals of Loss of Physiological Resilience: A Multi-Dataset Analysis</h4>
-          <div class="meta"><span class="ds">Kaggle</span></div>
+          <div class="meta"><span class="pub">Accepted · Nature Conference, Paris</span><span class="ds">Kaggle</span><a class="doi" href="https://www.researchsquare.com/article/rs-9108092/v1" target="_blank" rel="noopener">Preprint · Research Square</a></div>
+          <div class="doi">Next stage: simulation study with known ground truth.</div>
         </div>
         <div class="prow">
-          <h4>Temporal Organization of Respiratory Acoustic Signals Reflects Recovery Dynamics and Physiological Stability During Sleep</h4>
-          <div class="meta"><span class="ds">APSAA · PhysioNet (MIT)</span></div>
+          <h4>Voice tasks reveal a latent respiratory–phonatory organization linked to perceived vocal change in the Bridge2AI-Voice cohort</h4>
+          <div class="meta"><span class="pub">Accepted · Nature Conference, Paris</span><span class="ds">Bridge2AI-Voice</span></div>
+          <div class="doi">Next stage: simulation study with known ground truth.</div>
         </div>
         <div class="prow">
-          <h4>Thermal Tolerance Failure as a Dynamic Transition: Early Warning Signals and Reorganization of Multimodal Physiological Coupling in Exercise-Heat Exposure</h4>
-          <div class="meta"><span class="ds">PROSPIE · Loughborough</span><span class="doi">DOI 10.17028/rd.lboro.26076577.v1</span></div>
+          <h4>Digital Acoustic Phenotypes of Overnight Respiratory Activity</h4>
+          <div class="meta"><span class="ds">APSAA</span><a class="doi" href="https://www.preprints.org/manuscript/202609.0694" target="_blank" rel="noopener">Preprint · Preprints.org</a></div>
         </div>
         <div class="prow">
-          <h4>Acoustic Recovery Latency Couples with Self-Perceived Voice Quality: A Cross-Domain Validation from the Bridge2AI-Voice Adult Dataset</h4>
-          <div class="meta"><span class="ds">Bridge2AI-Voice</span></div>
+          <h4>Multimodal Recovery Latency in Professional Women's Football: Domain-Specific Adaptation and Graded Reversal After Perturbation</h4>
+          <div class="meta"><span class="ds">SoccerMon</span><span class="doi">Under review</span></div>
         </div>
         <div class="prow">
-          <h4>Recovery Latency of Voice-Derived Biomarkers Across Repeated Sessions: A Longitudinal Framework for Adaptive Capacity</h4>
-          <div class="meta"><span class="ds">Bridge2AI-Voice</span></div>
+          <h4>An Adaptive Recovery Window in the Annual Light Cycle: Photoperiod Associates with Recovery Latency Across Seven Wellness Domains</h4>
+          <div class="meta"><span class="ds">SoccerMon</span><span class="doi">Under review</span></div>
         </div>
         <div class="prow">
-          <h4>Latent Respiratory Organization Structures Voice Tasks and Tracks Perceived Vocal Change</h4>
-          <div class="meta"><span class="ds">Bridge2AI-Voice</span></div>
-        </div>
-        <div class="prow">
-          <h4>From the Energy Resistance Principle to Measurable Physiology: Recovery Latency as an Observable of éR</h4>
-          <div class="meta"><span class="ds">PMData · Simula</span></div>
-        </div>
-        <div class="prow">
-          <h4>Circulating Extracellular-Vesicle GDF15 as an Interorgan éR Marker After Acute Exercise</h4>
-          <div class="meta"><span class="ds">GEO · GSE209880 / GSE262576</span></div>
-        </div>
-        <div class="prow">
-          <h4>GEO Dataset — GSE108539</h4>
-        </div>
-        <div class="prow">
-          <h4>GEO Dataset — GSE182117</h4>
+          <h4>Microphone-Derived Respiratory Rhythm Organization During Sleep: Event-Specific Disruption and Cross-Modal Convergence With Oximetry</h4>
+          <div class="meta"><span class="ds">APSAA</span><span class="doi">Under review</span></div>
         </div>
       </div>
     </details>
 
-    <p class="res-note">Independent datasets: SportRxiv/IJSPP · Kaggle · SoccerMon · PhysioNet (MIT) · Bridge2AI-Voice · PROSPIE/Loughborough · PMData/Simula · GEO.</p>
+    <details class="papers reveal" open>
+      <summary>Simulation studies with known ground truth · in progress</summary>
+      <div class="plist">
+        <div class="prow">
+          <h4>01 — Adaptive Capacity Dynamics</h4>
+          <div class="doi">Longitudinal simulation of adaptive-capacity trajectories</div>
+        </div>
+        <div class="prow">
+          <h4>02 — Energy Resistance &amp; Temporal Dynamics (éR–ΔT)</h4>
+          <div class="doi">Simulation of energy resistance and the temporal organization of thermal oscillation</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="papers reveal">
+      <summary>Ongoing analyses</summary>
+      <div class="plist">
+        <div class="prow">
+          <h4>Thermal tolerance failure as a dynamic transition during exercise-heat exposure</h4>
+          <div class="meta"><span class="ds">PROSPIE · Loughborough</span></div>
+        </div>
+        <div class="prow">
+          <h4>Circadian clock organization in human skeletal muscle</h4>
+          <div class="meta"><span class="ds">GEO · GSE108539 / GSE182117</span></div>
+        </div>
+        <div class="prow">
+          <h4>Energy resistance (éR) as an observable of adaptive margin in free-living data</h4>
+          <div class="meta"><span class="ds">PMData · Simula</span></div>
+        </div>
+        <div class="prow">
+          <h4>Circulating extracellular-vesicle GDF15 after acute exercise</h4>
+          <div class="meta"><span class="ds">GEO · GSE209880 / GSE262576</span></div>
+        </div>
+      </div>
+    </details>
+
     <p class="res-note">Data source acknowledgement: voice analyses use the NIH Common Fund <a href="https://commonfund.nih.gov/bridge2ai" target="_blank" rel="noopener" style="color:var(--cyan)">Bridge2AI-Voice</a> public dataset. ECKO is an independent project and is not affiliated with, nor endorsed by, the NIH or the Bridge2AI program.</p>
   </div>
 </section>
 
 <!-- IP -->
-<section class="sec" id="ip">
+<section class="sec dark" id="ip">
   <div class="wrap">
     <div class="reveal" style="margin-bottom:34px">
       <span class="eyebrow">Intellectual property</span>
       <h2 style="font-size:clamp(27px,4.4vw,46px);max-width:24ch">The architecture is proprietary.</h2>
-      <p class="dim" style="max-width:58ch;margin-top:14px">Two Brazilian patent applications filed with INPI, and one additional application in preparation. Active international PCT window. Brazilian deep tech.</p>
+      <p class="dim" style="max-width:58ch;margin-top:14px">Three Brazilian patent applications filed with INPI. Active international PCT window. Brazilian deep tech.</p>
     </div>
     <div class="pat-grid reveal">
       <div class="pat"><div class="n">PATENT 01</div><div class="num">BR 10 2026 006549 8</div>
@@ -598,70 +709,82 @@
       <div class="pat"><div class="n">PATENT 02</div><div class="num">BR 10 2026 008466 2</div>
         <p>Acoustic respiratory signal analysis (SIAR) — mechanism and capability, context-agnostic.</p>
         <div class="date">Filed 08/04/2026 · INPI</div></div>
-      <div class="pat"><div class="n">PATENT 03</div><div class="num">In preparation</div>
+      <div class="pat"><div class="n">PATENT 03</div><div class="num">BR 10 2026 018801 8</div>
         <p>Load-conditioned decoupling mechanism — a distinct inventive core derived from multimodal recovery analysis.</p>
-        <div class="date">Filing scheduled · INPI · 2026</div></div>
+        <div class="date">Filed 28/07/2026 · INPI</div></div>
     </div>
   </div>
 </section>
 
 <!-- COMPUTE -->
-<section class="sec dark" id="compute">
+<section class="sec" id="compute">
   <div class="wrap">
     <div class="gpu">
       <div class="reveal">
         <span class="eyebrow">Compute</span>
         <h2>Why GPU computing matters.</h2>
-        <p>VERSO processes multimodal, longitudinal physiological data through machine learning pipelines that scale with growing user histories — every additional day of data deepens the model rather than replacing it.</p>
-        <p>GPU acceleration enables efficient model training, high-throughput signal processing, and the foundation models for adaptive physiology we are building next.</p>
+        <p>Today VERSO runs as an auditable, deterministic inference engine, and ECKO's analyses run in Python on CPU. The bottleneck is computational: permutation and surrogate testing over long physiological series — about 21 million heart-rate samples in one public dataset — and multi-year synthetic cohorts simulated hundreds of times.</p>
+        <p>The next stage is learned models: training longitudinal models and the adaptive digital twin on GPU. We are evaluating NVIDIA tools for this stage.</p>
       </div>
       <div class="load reveal">
-        <div class="loadrow"><span class="t">Signal processing</span><span class="track"><i style="width:82%"></i></span></div>
-        <div class="loadrow"><span class="t">Longitudinal training</span><span class="track"><i style="width:94%"></i></span></div>
-        <div class="loadrow"><span class="t">Multimodal fusion</span><span class="track"><i style="width:76%"></i></span></div>
-        <div class="loadrow"><span class="t">Foundation models</span><span class="track"><i style="width:63%"></i></span></div>
+        <div class="loadrow"><span class="t">Now</span><span>Permutation &amp; surrogate testing on long series</span></div>
+        <div class="loadrow"><span class="t">Now</span><span>Simulation studies with known ground truth</span></div>
+        <div class="loadrow"><span class="t">Next</span><span>GPU training of longitudinal models</span></div>
+        <div class="loadrow"><span class="t">Next</span><span>Adaptive digital twin at cohort scale</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ROADMAP -->
-<section class="sec" id="roadmap">
+<section class="sec dark" id="roadmap">
   <div class="wrap">
     <div class="reveal" style="margin-bottom:34px">
       <span class="eyebrow">Roadmap</span>
       <h2 style="font-size:clamp(27px,4.4vw,46px)">From product to platform.</h2>
     </div>
     <div class="road reveal">
-      <div class="yearcard"><div class="yr">2026</div>
+      <div class="yearcard"><div class="yr">Now</div>
         <ul class="steps">
-          <li><b>01</b><span>Kinora</span></li>
-          <li><b>02</b><span>Adaptive digital twin</span></li>
-          <li><b>03</b><span>Respiratory AI</span></li>
-          <li><b>04</b><span>Longitudinal AI</span></li>
+          <li><b>01</b><span>Kinora MVP in testing with volunteers</span></li>
+          <li><b>02</b><span>Simulation study 01 — Adaptive Capacity Dynamics</span></li>
+          <li><b>03</b><span>Simulation study 02 — Energy Resistance &amp; Temporal Dynamics</span></li>
+          <li><b>04</b><span>Manuscripts under review and ongoing analyses</span></li>
         </ul></div>
-      <div class="yearcard future"><div class="yr">2027</div>
+      <div class="yearcard future"><div class="yr">Next</div>
         <ul class="steps">
-          <li><b>05</b><span>Clinical AI platform</span></li>
-          <li><b>06</b><span>SDK</span></li>
-          <li><b>07</b><span>API</span></li>
-          <li><b>08</b><span>Hardware integrations</span></li>
-          <li><b>09</b><span>Digital therapeutics</span></li>
+          <li><b>05</b><span>GPU training of longitudinal models</span></li>
+          <li><b>06</b><span>Adaptive digital twin — evaluation protocol</span></li>
+          <li><b>07</b><span>SDK / API</span></li>
+          <li><b>08</b><span>Sensor and hardware integrations</span></li>
         </ul></div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT + CONTACT -->
-<section class="sec dark" id="about">
+<section class="sec" id="about">
   <div class="wrap reveal">
-    <span class="eyebrow">The founder</span>
+    <span class="eyebrow">Team</span>
     <div class="about" style="margin-top:14px">
       <div class="avatar">AS</div>
       <div>
         <h3>Álvaro Alaor Silva</h3>
-        <div class="roles"><span>Physiotherapist</span><span>Scientific Researcher</span><span>Founder of ECKO</span><span>Peer Reviewer</span></div>
+        <div class="roles"><span>Physiotherapist</span><span>Scientific Researcher</span><span>Founder &amp; lead developer</span><span>Peer Reviewer</span></div>
         <p>Focused on understanding human adaptive physiology through AI — building the modeling layer between raw physiological signals and how a person actually adapts to load over time.</p>
+        <p style="margin:0 0 10px">Peer reviewer for <span class="hl" style="color:var(--ink)">PLOS Digital Health</span> — 46 reviews. <a class="orcid" href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0001690" target="_blank" rel="noopener">Public review →</a></p>
+        <a class="orcid" href="https://orcid.org/0009-0005-8288-9476" target="_blank" rel="noopener">ORCID 0009-0005-8288-9476</a>
+      </div>
+    </div>
+
+
+    <div class="about" style="margin-top:40px">
+      <div class="avatar">VR</div>
+      <div>
+        <h3>Vinicius Rodrigues</h3>
+        <div class="roles"><span>Head of Finance &amp; Business</span></div>
+        <p>Mechanical engineer with a background in financial markets. Leads finance and business at ECKO.</p>
+        <a class="orcid" href="mailto:viniciusrodrigues@eckoverso.com">viniciusrodrigues@eckoverso.com</a>
       </div>
     </div>
 
@@ -670,13 +793,13 @@
         <h3>Partnerships &amp; research collaboration</h3>
         <p>Open to technology partners, research collaborations and accelerator programs.</p>
       </div>
-      <a class="btn btn-primary" href="mailto:alvaro@verso1.com">alvaro@verso1.com</a>
+      <a class="btn btn-primary" href="mailto:alvaroalaor@eckoverso.com">alvaroalaor@eckoverso.com</a>
     </div>
   </div>
 </section>
 
 <!-- FILME CONCEITO -->
-<section class="sec" id="film">
+<section class="sec dark" id="film">
   <div class="wrap">
     <div class="film">
       <div class="reveal">
@@ -702,7 +825,7 @@
     <polygon points="50,6 41,28 59,28" fill="currentColor"/>
     <circle cx="50" cy="52" r="18" fill="currentColor"/>
   </svg>
-  <div class="mark">EC<span>K</span>O</div>
+  <div class="mark">EC<b>K</b>O</div>
   <div class="sub">Adaptive Physiological Intelligence</div>
 </section>
 
@@ -723,7 +846,7 @@
   var lio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.35});
   document.querySelectorAll('#lego .layer, #lego .connector').forEach(function(el){lio.observe(el)});
 
-  /* hero video: cobre o corpo quando existe; se não carregar, revela o corpo de partículas */
+  /* hero video: cobre o corpo quando existe; se nao carregar, revela o corpo de particulas */
   var hv=document.querySelector('.hero-video');
   if(hv){
     var hideHV=function(){hv.classList.add('hidden');};
